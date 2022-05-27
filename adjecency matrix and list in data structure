@@ -1,0 +1,88 @@
+/* program for adjecency list and matrix */
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+    int vertex;
+    struct node *next;
+}NODE;
+NODE *list[10];
+int createmat(int a[10][10],int n)
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            a[i][j]=0;
+            if(i!=j)
+            {
+                printf("Is there edge between %d and %d:",i+1,j+1);
+                scanf("%d",&a[i][j]);
+            }
+        }
+    }
+}
+int displaymat(int a[10][10],int n)
+{
+    int i,j;
+    printf("The adjecency matrix is :\n");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("%d \t",a[i][j]);
+        }
+        printf("\n");
+    }
+}
+int createlist(int a[10][10],int n)
+{
+    int i,j;
+    NODE *temp,*newnode;
+    for(i=0;i<n;i++)
+    {
+        list[i]=NULL;
+        for(j=0;j<n;j++)
+        {
+            if(a[i][j]==1)
+            {
+                newnode=(NODE*)malloc(sizeof(NODE));
+                newnode->vertex=j+1;
+                newnode->next=NULL;
+                if(list[i]==NULL)
+                list[i]=temp=newnode;
+                else
+                temp->next=newnode;
+                temp=newnode;
+            }
+        }
+    }
+}
+int displaylist(int a[10][10],int n)
+{
+    NODE *temp;
+    int i;
+    printf("The adjecency list is:\n");
+    for(i=0;i<n;i++)
+    {
+        printf("[%d]->",i+1);
+        temp=list[i];
+        while(temp)
+        {
+            printf("%d->",temp->vertex);
+            temp=temp->next;
+        }
+        printf("NULL\n");
+    }
+}
+int main()
+{
+    int a[10][10],n;
+    printf("Enter the vertices:");
+    scanf("%d",&n);
+    createmat(a,n);
+    displaymat(a,n);
+    createlist(a,n);
+    displaylist(a,n);
+}
