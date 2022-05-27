@@ -1,0 +1,188 @@
+/* Binary search tree program */
+#include<stdio.h>
+#include<stdlib.h>
+ typedef struct node
+  {
+    int data;
+    struct node *left,*right;
+  }BST;
+ BST *create();
+ BST *insert(BST *,int);
+ BST *inorder(BST *);
+ BST *preorder(BST *);
+ BST *postorder(BST *);
+ BST *search(BST *,int);
+ BST *delete(BST *,int);
+ 
+  int main ()
+  {
+      int ch,x;
+    BST *root=NULL,*ans;
+    do
+    {
+      printf("\n1:create\n2:insert\n3:inorder\n4:preorder\n5:postorder");
+      printf("\n6:search\n7:delete");
+      printf("\nenter your choice:");
+      scanf("%d",&ch);
+      switch(ch)
+       {
+        case 1:root=create();
+               break;
+        case 2:printf("enter the data to be inserted:");
+               scanf("%d",&x);
+               root=insert(root,x);
+               break;
+        case 3:printf("\nDISPLAY:\n");
+               inorder(root);
+               break;
+        case 4:printf("\nDISPLAY:\n");
+               preorder(root);
+               break;
+        case 5:printf("\nDISPLAY:\n");
+               postorder(root);
+               break;
+        case 6:printf("enter the key to be searching:");
+               scanf("%d",&x);
+               ans=search(root,x);
+                if(ans==NULL)
+                   printf("\nohh..sorry key is not found");
+                else
+                   printf("\nheyy...key is found");
+               break;
+        case 7:printf("enter the key u want to be delete:");
+               scanf("%d",&x);
+               root=delete(root,x);
+               break;
+        default:printf("\nInvalid Case!!!\n");
+       }
+    } while(ch!=0);
+  }
+
+  BST *create()
+  {
+    BST *root=NULL;
+    int x,i,n;
+    printf("enter the nodes to be created:");
+    scanf("%d",&n);
+    printf("\nenter the data:");
+     for(i=0;i<n;i++)
+      {
+        scanf("%d",&x);
+        root=insert(root,x);
+      }
+      return(root);
+  }
+
+  BST *insert(BST *tree,int x)
+   {
+     BST *newnode;
+      if(tree==NULL)
+       {
+         newnode=(BST *)malloc(sizeof(BST));
+         newnode->data=x;
+         newnode->left=NULL;
+         newnode->right=NULL;
+         return(newnode);
+       }
+      if(x<tree->data)
+       {
+         tree->left=insert(tree->left,x);
+         return(tree);
+       }
+      else if(x>tree->data)
+             {
+              tree->right=insert(tree->right,x);
+              return(tree);
+             }
+            else 
+              printf("\nduplicate data");
+              return(tree);
+   }
+
+   BST *inorder(BST *tree)
+    {                            // left-root-right
+      if(tree!=NULL)
+       {
+         inorder(tree->left);
+         printf("%d\n",tree->data);
+         inorder(tree->right);
+       }  
+    } 
+   BST *preorder(BST *tree)
+    {                            // root-left-right
+      if(tree!=NULL)
+       {
+         printf("%d\n",tree->data);
+         inorder(tree->left);
+         inorder(tree->right);
+       }  
+    }
+   BST *postorder(BST *tree)
+    {                            // left-right-root
+      if(tree!=NULL)
+       {
+         inorder(tree->left);
+         inorder(tree->right);
+         printf("%d\n",tree->data);
+       }  
+    }
+ 
+  BST *search(BST *root,int x)
+   {
+     while(root!=NULL)
+      {
+        if(x==root->data)
+          return(root);
+        if(x<root->data)
+          root=root->left;
+        else
+          root=root->right;
+      }
+      return(NULL);
+   }
+
+   BST *delete(BST *tree,int x)
+    {
+      BST * temp;
+       if(tree==NULL)
+         {
+            printf("\nelement is not found!!!");
+            return(tree);
+         }
+        if(x<tree->data)
+          {
+            tree->left=delete(tree->left,x);
+            return(tree);
+          }
+         if(x>tree->data)
+           {
+            tree->right=delete(tree->right,x);
+            return(tree);
+           }
+           if(tree->left==NULL && tree->right==NULL)
+             {
+               temp=tree;
+               free(temp);
+               return(NULL);
+             }
+             if(tree->left==NULL)
+               {
+                 temp=tree;
+                 tree=tree->right;
+                 free(temp);
+                 return(tree);
+               }
+               if(tree->right==NULL)
+               {
+                 temp=tree;
+                 tree=tree->left;
+                 free(temp);
+                 return(tree);
+               }
+               temp=tree->right;
+                while(temp->left!=NULL)
+                temp=temp->left;
+                tree->data=temp->data;
+                tree->right=delete(tree->right,temp->data);
+                return(tree);
+    }
