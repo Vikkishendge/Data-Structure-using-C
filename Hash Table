@@ -1,0 +1,81 @@
+#include<stdio.h>
+int insert(int HT[10],int key)
+{
+  int i,index;
+  for(i=0;i<10;i++)
+  {
+    index=hf(key,i);
+    if(HT[index]==-1)
+    {
+      HT[index]=key;
+      return;
+    }
+  }
+}
+int hf(int key,int i)
+{
+  return(key%10+i)%10;
+}
+int show(int HT[10])
+{
+  int i;
+  for(i=0;i<10;i++)
+  {
+    printf("%d[%d]\n",i,HT[i]);
+  }
+}
+int search(int HT[10],int key)
+{
+  int i,index;
+  for(i=0;i<10;i++)
+  {
+    index=hf(key,i);
+    if(HT[index]==key)
+    return index;
+  }
+}
+int delete(int HT[10],int key)
+{
+  int index;
+  index=search(HT,key);
+  if(HT[index]==-1)
+  printf("key not found");
+  else 
+  HT[index]=-1;
+}
+int main()
+{
+  int HT[10],i,key,index,choice;
+  for(i=0;i<10;i++)
+  HT[i]=-1;
+  do
+ {
+   printf("\n1:Insert \n2:Search \n3:Delete");
+   printf("Enter your choice:");
+   scanf("%d",&choice);
+   switch(choice)
+   {
+     case 1:
+       printf("Enter the key to be inserted:");
+       scanf("%d",&key);
+       insert(HT,key);
+       show(HT);
+       break;
+     case 2:
+       printf("Enter the key to search:");
+       scanf("%d",&key);
+       index=search(HT,key);
+       if(index==-1)
+       printf("key not found");
+       else
+       printf("%d key found at position%d:",key,index);
+       break;
+     case 3:
+       printf("Enter the key to be deleted:");
+       scanf("%d",&key);
+       delete(HT,key);
+       show(HT);
+   }
+    
+ } while(choice!=4);
+}
