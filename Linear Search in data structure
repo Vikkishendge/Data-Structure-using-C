@@ -1,0 +1,33 @@
+
+#include<stdio.h>
+
+int main()
+{
+int a[10],i, n, key ,pos;
+
+printf ("\nHow many numbers:");
+scanf("%d",&n);
+
+printf("\nEnter the numbers:");
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+
+printf("Enter the search key");
+scanf("%d",&key);
+
+pos=linearsearch(a,n,key);
+if(pos==-1)
+ printf("key is not found");
+else
+ printf("%d key is found at position %d",key,pos);
+
+}
+int linearsearch( int a[], int n,int key)
+{
+int i;
+for(i=0;i<n;i++)
+if(a[i]==key)
+return i;
+else
+return -1;
+}
