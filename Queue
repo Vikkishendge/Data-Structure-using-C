@@ -1,0 +1,60 @@
+#include<stdio.h>
+#define MAXSIZE 5
+ typedef struct
+{
+  int data[MAXSIZE];
+  int front, rear;
+}QUEUE;
+int init(QUEUE *pq)
+{
+  pq->rear=pq->front=-1;
+}
+int addq(QUEUE *pq,int num)
+{
+  pq->data[++pq->rear]=num;
+}
+int isfull(QUEUE *pq)
+{
+  return( pq->rear==MAXSIZE-1);
+}
+int removeq(QUEUE *pq)
+{
+  int num;
+  pq->front++;
+  num=(pq->data[pq->front]);
+  return(num);
+}
+int isempty (QUEUE *pq)
+{
+  return(pq->front==pq->rear);
+}
+int main()
+{
+  int n,choice;
+  QUEUE q;
+  init(&q);
+  do
+  {
+  printf("\n1:ADD \n2:DELETE \n3: PEEK");
+  printf("\nEnter your choice:");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+    case 1:
+      printf("Enter the data:");
+      scanf("%d",&n);
+      if(isfull(&q))
+      printf("Queue is overflow");
+      else
+      addq(&q,n);
+      break;
+    case 2:
+      if(isempty (&q))
+      printf("Queue is underflow");
+      else
+      printf("The remove element is:%d",removeq(&q));
+      break;
+      
+  }
+}while(choice!=4);
+}
