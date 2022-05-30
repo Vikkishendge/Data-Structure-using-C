@@ -1,0 +1,37 @@
+
+#include <stdio.h>   
+
+int main()
+{
+  int a[20],i, n, key ,pos;
+  
+  printf("How many numbers:");
+  scanf("%d",&n);
+  printf("Enter the sorted elements:");
+  for(i=0;i<n;i++)
+  scanf("%d",&a[i]);
+  printf("Enter the key to be search:");
+  scanf("%d",&key);
+  
+ pos=binarySearch(a,n,key);
+ if(pos==-1)
+ printf("element is not fount",key);
+ else
+printf("%d element is found at position %d",key,pos);
+}   
+int binarySearch(int a[20],int n,int key)
+{
+  int begin =0, end=n-1, mid;
+  while(begin<=end)
+  {
+    
+    mid =(begin + end)/2;
+    if(key==a[mid])
+    return mid;
+    if(key<a[mid])
+    end = mid-1;
+   else
+    begin = mid+1;
+  }
+return -1;
+}
