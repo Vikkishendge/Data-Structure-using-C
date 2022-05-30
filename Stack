@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<conio.h>
+#define MAXSIZE 5
+
+typedef struct
+{
+  int data[MAXSIZE];
+  int top;
+}STACK;
+
+void init(STACK *ps)
+{
+  ps->top=-1;
+}
+
+void push(STACK *ps, int num)
+{
+  ps->top++;
+  ps->data[ps->top] =num;
+}
+
+int pop(STACK *ps)
+{
+
+  return(ps->data[ps->top--]);
+}
+
+int peek(STACK *ps)
+{
+  return(ps->data[ps->top]);
+}
+
+int isempty(STACK *ps)
+{
+  return(ps->top==-1);
+}
+
+int isfull(STACK *ps)
+{
+  return(ps->top==MAXSIZE-1);
+}
+
+int main()
+{
+  int n,choice;
+  STACK s;
+  init(&s);
+  do
+  {
+    printf("\n1:PUSH\n2:POP\n3:PEEK\n4:EXIT");
+    printf("\nEnter your choice:");
+    scanf("%d",&choice);
+    
+    switch(choice)
+    {
+    case 1:
+      if(isfull(&s))
+        printf("\nStack Overflowed");
+      else
+      {
+        printf("\nEnter the element to be pushed");
+        scanf("%d",&n);
+        push(&s,n);
+      }
+      break;
+    
+    case 2:
+      if(isempty(&s))
+        printf("\nStack is empty");
+      else
+      {
+        printf("\nThe poped element is: %d",pop(&s));  
+      }  
+      break;
+    case 3:
+      if(isempty(&s))
+        printf("Stack is Empty");
+      else
+      printf("\The topmost element is :%d",peek(&s));
+      break;
+    }
+  }while(choice!=4);
+}
