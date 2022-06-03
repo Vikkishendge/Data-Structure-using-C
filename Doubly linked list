@@ -1,0 +1,159 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+  int info; 
+  struct node *prev,*next;
+}NODE;/*Create the node structure*/
+
+int search(NODE *head,int key)
+ {
+  NODE *temp;
+  int pos;
+  for(temp=head->next,pos=1;temp!=NULL;temp=temp->next,pos++)
+   {
+    if(temp->info==key)
+    return pos;
+   }
+    return -1;
+  }/*End of search function.....*/
+    
+ int insert(NODE *head,int num,int pos)
+ {
+   NODE *temp,*temp1,*newnode;
+   int i;
+   
+   for(temp=head,i=1;(temp!=NULL)&&(i<=pos-1);i++)
+   temp=temp->next;
+   if(temp=NULL)
+   {
+     printf("position out of range");
+     return;
+   }
+   newnode= (NODE*)malloc(sizeof(NODE));
+   newnode->info=num;
+   newnode->next=newnode->prev=NULL;
+   temp1=temp->next;
+   newnode->next=temp1;
+   temp1->prev=newnode;
+   temp->next=newnode; 
+   newnode->prev=temp;
+ }
+ int delposition(NODE *head,int pos)
+ {
+  NODE *temp,*temp1;
+  int i;
+  for(temp=head->next,i=1;(temp->next!=NULL)&&(i<=pos-1),i++;temp=temp->next) 
+  if(temp->next=NULL)
+  {
+    printf("Position out of range");
+    return;
+  }
+  temp1=temp->next;
+  temp->next=temp1->next;
+  if(temp1->next!=NULL)
+  temp1->next->prev=temp;
+  free(temp1);
+ }
+int delvalue(NODE *head,int num)
+{
+  NODE *temp,*temp1;
+  for(temp=head->next;temp->next!=NULL;temp=temp->next)
+  if(temp->next->info==num)
+  {
+    temp1= temp->next;
+    temp->next=temp1->next;
+    temp1->next->prev=temp;
+    free(temp1);
+    return;
+  }
+printf("element not found ");
+}
+
+void display(NODE *head)
+ {
+  NODE *temp;
+ 
+  for(temp=head->next;temp!=NULL;temp=temp->next)
+   {
+    printf("%d",temp->info);
+   }
+    printf("NULL");
+ }/*End of display function....*/
+void create(NODE *head)
+ {
+  NODE *last, *newnode;
+  int i,n;
+  last=head;
+  
+  printf("How many nodes you want create:");
+  scanf("%d",&n);
+  
+  for(i=0;i<n;i++)
+   {
+    newnode=(NODE*)malloc(sizeof(NODE));
+    newnode->next=newnode->prev=NULL;
+    printf("Enter the number stored:");
+    scanf("%d",&newnode->info);
+    last->next=newnode;
+    newnode->prev=last;
+    last=newnode;
+   }
+ }/*End of node create function....*/
+int main()
+ {
+  NODE *head;
+  int choice, n,pos;
+  head=(NODE*)malloc(sizeof(NODE));
+  head->prev=head->next=NULL;/* allocate the memory run time using malloc function*/
+  do
+{
+  printf("\n1: create");
+  printf("\n2: display");
+  printf("\n3: search");
+  printf("\n4: insert");
+  printf("\n5: delvalue");
+  printf("\n6: delposition");
+  printf("\nEnter your choice:");
+  scanf("%d",&choice);
+  
+  switch(choice)
+  {
+  case 1: create(head);
+          break;
+  case 2: display(head);
+          break;
+          
+  case 3:
+     printf("Enter the element to search:");
+     scanf("%d",&n);
+     pos=search(head,n);
+     if(pos==-1)
+     printf("Element not found int list");
+     else
+     printf("Element found at pos %d",pos);
+     break;
+  case 4: 
+    printf("Enter the element and pos:");
+    scanf("%d %d",&n,&pos);
+    insert(head,n,pos);
+    display(head);
+    break;
+         
+  case 5: 
+    printf("Enter the number to delete:");
+    scanf("%d",&n);
+    delvalue(head,n);
+    display(head);
+    break;
+    
+  case 6:
+    printf("Enter the delete by position:");
+    scanf("%d",&pos);
+    delposition(head,pos);
+    display (head);
+    break;
+  } 
+  }while(choice!=7);
+}
