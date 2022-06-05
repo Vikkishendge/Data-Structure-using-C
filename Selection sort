@@ -1,0 +1,39 @@
+
+#include <stdio.h>
+
+int main()
+{
+  int a[20],i ,n;
+  
+  printf("How many number:");
+  scanf("%d",&n);
+  
+  printf("Enter the unsorted numbers:");
+  for(i=0;i<n;i++)
+  scanf("%d",&a[i]);
+  
+  selectionsort(a ,n);
+  
+  printf("the sorted output is:");
+  for(i=0;i<n;i++)
+  printf("%d",a[i]);
+}
+int selectionsort(int a[],int n)
+{
+  int i, temp, pos , cu , smallest;
+  for(cu=0;cu<n;cu++)
+  {
+    smallest = a[cu];
+    pos = cu;
+  
+  for(i=cu+1;i<n;i++)
+  if(a[i]<smallest)
+  {
+    smallest = a[i];
+    pos = i;
+  }
+  temp = a[cu];
+  a[cu]= a[pos];
+  a[pos]= temp;
+  }
+ }
