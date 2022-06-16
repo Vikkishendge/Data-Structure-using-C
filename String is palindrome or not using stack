@@ -1,0 +1,61 @@
+#include<stdio.h>
+#define MAXSIZE 20
+typedef struct
+{
+int data[MAXSIZE];
+int top;
+}STACK;
+void initstack(STACK *ps)
+{
+ps->top=-1;
+}
+int isempty(STACK *ps)
+{
+return (ps->top == -1);
+}
+int isfull(STACK *ps)
+{
+return(ps->top==MAXSIZE -1);
+}
+int pop(STACK *ps)
+{
+return(ps->data[ps->top--]);
+}
+void push(STACK *ps,int n)
+{
+ps->data[++ps->top]=n;
+}
+int stacktop(STACK *ps)
+{
+return ps->data[ps->top];
+}
+
+void main()
+
+{
+char str[20];
+char ans;
+printf("enter a string:");
+scanf("%s",str);
+ans=ispalindrome(str);
+if(ans==0)
+printf("\n the string %s is not a palindrome",str);
+else
+printf("\n the string %s is a palindrome",str);
+}
+int ispalindrome(char str[20])
+{
+int i;
+STACK s;
+initstack(&s);
+for(i=0;str[i]!='\0';i++)
+push(&s,str[i]);
+i=0;
+while(!isempty(&s))
+{
+if(str[i]!=pop(&s))
+return 0;
+i++;
+}
+return 1;
+}
