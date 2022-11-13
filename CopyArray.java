@@ -1,6 +1,4 @@
 
-package GeeksforGeeks;
-
 public class CopyArray
 {
 
