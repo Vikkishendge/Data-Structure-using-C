@@ -1,0 +1,30 @@
+<?php
+
+$str1=$_POST['txt1'];
+$str2=$_POST['txt2'];
+$choice=$_POST['ch'];
+
+switch($choice)
+ {
+	case 'upp':
+		$upper=strtoupper($str1);
+		echo "The string in uppercase is : $upper";
+		break;
+	case 'low':
+	    $lower=strtolower($str2);
+		echo "The string in lowecase is : $lower";
+		break;
+	case 'ucf':
+	    $ucfirst=ucfirst($str1);
+	    echo "The Upper character first:$ucfirst";
+	    $ucfirst=ucfirst($str2);
+	    echo "The Upper character first:$ucfirst";
+	    break;
+	case 'ucw':
+	    $ucword=ucwords($str1);
+	    echo "The upper character all word fist letter:$ucword";
+	    $ucword=ucwords($str2);
+	    echo "The upper character all word fist letter:$ucword";
+        break;
+}
+?>
