@@ -1,0 +1,226 @@
+<?php
+/* default parameter 
+function add($name=12)
+{
+	return $name+2;
+}
+$a=20;
+echo(add());
+
+-----------------------------------------------------------------------------------------------*/
+/*
+// using fun_get_args() function we can not define the parameter in function or user dont no
+// how many pass parameter in calling time so we can use this function return parameter ,ex=
+
+function add()
+{
+  //$arr=func_get_args();   // get parameter in arr 
+  // $arr=func_num_args();    // it retun the number of parameters assign in function
+  $arr=func_get_arg(0);    // it function returns the specific argument
+   	print_r($arr);
+  
+}
+add('vikas','shendge');
+------------------------------------------------------------------------------------------------------
+*/
+
+// variable function use to call the function using variable
+/*
+function hello($a,$b)
+{
+  echo"good morning<br>"; 
+  return $a+$b;
+}
+$var="hello";   // assign the function name to variable
+echo($var(10,20));  // call the function using variable
+---------------------------------------------------------------------------------------------------
+*/
+
+// Anonymous function- it function has no name and it is store in any variable assign 
+//ex-
+/*
+$var=function()  // assign the function in varible
+{
+	echo "anonymous function";
+};   // function ends with semicolon
+$var();   // call the variable 
+
+$y=23;  // global variable access in anonymous function
+$var1=function($p)   //$var1=function()in case we are not write parameter direct print it give error 
+{
+	echo "$y";
+};
+$var1($y);  // call function in pass argument
+-----------------------------------------------------------------------------------------------
+*/
+/*
+// variable interpolation it is process of replacing variable name in the string.
+$a="vp";
+$b="baramati";
+echo "my college name is $a and place $b";
+echo '$a';  // single quote not print the value of varible it print direct variable
+printf("%s",$a);   // same as c programming
+-----------------------------------------------------------------------------------------
+// var_dump function 
+
+$a=20;
+echo var_dump($a); // it return the datatype of variable and size
+------------------------------------------------------------------------------------
+
+// trim function use to cut the character in string 
+//1) trim- use for left and right  charctor cut
+/*
+$a="hello guys";
+
+echo"$a";
+
+echo trim($a,'hs');  // cut the first character and end character
+
+echo rtrim($a,'he');   // cut right side character
+
+echo ltrim($a,'s');    // cut left side character
+-------------------------------------------------------------------------------------------
+
+//strip_tags  - use of remove html tag
+
+$a="<h1><i>good coding</i></h1>";
+echo "$a";
+
+echo strip_tags($a);   // remove the html tag effect
+
+echo strip_tags($a,'<i>');
+
+---------------------------------------------------------------------------------
+
+// string compare using strcmp it case sensitive 
+ $a='abc';   // it is not same abc and ABC 
+ $b='ABC';
+ echo strcmp($a, $b); return 1=false  
+ -----------------------------------------------------------------------
+
+ // strcasecmp - campare without case sensitive
+ $a='VIKAS';
+ $b='vikas';
+
+ echo strcasecmp($a, $b);  // return 0-true it function compare string but it is without case sensitive
+ ------------------------------------------------------------------------------------
+
+  // strncmp return the first few number comare strncmp(str1,str2,range)
+ // strncasecmp return the first few number but it not case sensitive 
+ $a='hello'; 
+ $b='HElo';
+
+ echo strncasecmp($a, $b, 3);  // not case sensitive 
+ //echo strncmp($a, $b, 2);    // case sensitive
+ -----------------------------------------------------------------
+// Manipulation ans searching string
+------------------------------------------------------------- 
+// substr(str,start,size)  it return substring 
+ $a='i am a student of vp college';
+
+ echo substr($a, 16);  //it function return the substring of string means any part of string
+--------------------------------------------------------------------------
+// substr_count(str,name of substring)   it reuturn the substring is how many time occurs
+$a='i am a student of am vp college';
+echo substr_count($a,'am'); 
+----------------------------------------------------------------------
+
+// str_replace('replace string','new string',str) it return the in string any word/string replace 
+$a='i am a student of vp college';
+echo str_replace("vp","vpasc",$a); // in this function replace vp to vpasc 
+---------------------------------------------------------------------------------
+
+// Miscellaneous string functions 
+// it strrev() return the reverse string 
+$str='vikas';
+echo strrev($str);
+-----------------------------------------------------------------------
+
+// str_repeat(str,number of time) it return the string how many time repeat print
+$a='vikas';
+echo str_repeat($a,5);
+
+--------------------------------------------------------------------
+// str_pad(str,sizeof str and new c/s,add any character/symbol) it return the add ends with extra charater or symbol
+$a='vikas';
+
+echo  str_pad($a,10,'.');
+---------------------------------------------------------------------------------
+
+// Decomposing a string
+// explode() it function return the break string into array values
+
+$a='good,morning,guys';
+$arr=explode(',',$a);  // string to array
+//or  $arr=explode(',',$a,2); // 2 is size of array print index
+print_r($arr);
+---------------------------------------------------------
+// impode() function return the array to string 
+$a=array('good','morning','guys');
+print_r($a);
+$str=implode(',',$a);   
+echo $str;
+------------------------------------------------
+// strtok(str,',') it return the string tokenize in word
+$a="i,am,a,student,of,am,vp,college";
+$tok=strtok($a,','); // $a in string seperator , using separate
+while($tok!==false)  // $tok all string size count and tokenize
+{
+  echo "$tok<br>";
+  $tok=strtok(',');
+}
+------------------------------------------------------------------
+// String Search function
+// strpos(str,'search variable') it return the position of any string in varible
+$str='hii good college of vp';
+
+echo strpos($str,'good');
+-------------------------------------------------------------
+
+//strrpos()it return  position of last occurs in string
+ //ex-hi good hi;--->ans:8
+$a='hii good college of vp college of vp';
+
+echo strrpos($a,'vp');
+-------------------------------------------------------------
+
+// strstr(str,'occurce')it return the any name/charactor first occur and that position to last print string
+$a=' i im a learning php';
+
+echo strstr($a,'a');// print first a to end of string
+echo "<br>";
+echo strstr($a,'learning',true);  // it return the true means print start to this string words
+echo "<br>";
+echo strstr($a,'learning',false);  // return false means selected string to end 
+  echo "<br>";
+echo strstr($a,'AM',false); // but it is case sensitive
+-----------------------------------------------------------------------
+
+// strchr(str,'occurce') it is same as strstr
+
+$a='hello i am student of vp college';
+
+echo strchr($a,'i');   // i to last
+---------------------------------------------------------------------
+
+// strrchr(str,'occurace')  it return last occurce of string means search backword for the string
+$a='hello i am student of am vp college';
+
+echo strrchr($a,'am'); // search  and print the last occurance of string
+
+------------------------------------------------------------------------------------
+
+// searching using masks
+//strspn()return the count the number of character in string
+// return how many character find in string
+$a='hello i am student of am vp college';
+
+echo strspn($a, 'hello guys');
+-----------------------------------------------------------------------------------
+
+// parse_url(url) return the array of component of url
+$a=parse_url('https://www.w3schools.com/');
+print_r($a);
+*/
+
+?>
