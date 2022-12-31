@@ -1,0 +1,38 @@
+<!DOCType html>
+	<html>
+	<head>
+		<style type="text/css">
+			table
+			{
+				border: 2px;
+				font: 15px,Arial;
+
+			}
+			th,td
+			{
+				border: 3px solid black;
+				padding: 4px 10px;
+				margin: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+          <table>
+               <tr><th colspan="4">List of Books</th></tr>
+               <tr><th rowspan="2">Item No</th>
+               	   <th rowspan="2">Item Name</th>
+               	   <th colspan="2">Price</th>
+               	</tr>
+               	<tr>
+               		<th>RS</th><th>Paise</th>
+               	</tr>
+               	<tr>
+               		<td>1</td>
+               		<td>java book</td>
+               		<td>200</td>
+               		<td>00</td>
+               	</tr>
+          </table>
+	</body>
+	</html>
