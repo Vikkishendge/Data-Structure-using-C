@@ -1,0 +1,62 @@
+<?php
+
+$d=$_POST['txt1'];
+
+//$db= new mysqli_connect("servername=localhost dbname=college username=mysql password=mysql@123");
+$servername="localhost";
+$username="root";
+$password="mysql@123";
+$dbname="college";
+$db=mysqli_connect($servername,$username,$password,$dbname);
+if($db)
+echo "connect.....";
+else
+echo "not connect......";
+
+$Quary="select * from $d";
+$r=mysqli_query($db,$Quary);
+
+print"<table border=1>";
+print"<th>student_no</th>";
+print"<th>student_name</th>";
+print"<th>student_class</th>";
+while($row=mysqli_fetch_array($r)) 
+{
+	print"<tr>";
+	  echo "<td>$row[0]</td>";
+      echo "<td>$row[1]</td>";
+      echo "<td>$row[2]</td>";
+    print"</tr>";
+}
+
+$insert=$_POST['number1'];
+$insert1=$_POST['name1'];
+$insert2=$_POST['class'];
+
+
+$Quary="insert into student values($insert,'$insert1','$insert2')";
+$r=mysqli_query($db,$Quary);
+if($r==true)
+{
+	echo "Successfully Insert values......";
+    $Quary="select * from student";
+$r=mysqli_query($db,$Quary);
+
+print"<table border=1>";
+print"<th>student_no</th>";
+print"<th>student_name</th>";
+print"<th>student_class</th>";
+while($row=mysqli_fetch_array($r)) 
+{
+	print"<tr>";
+	  echo "<td>$row[0]</td>";
+      echo "<td>$row[1]</td>";
+      echo "<td>$row[2]</td>";
+    print"</tr>";
+}
+}
+else
+	echo "Not Inserted value....";
+
+
+?>
