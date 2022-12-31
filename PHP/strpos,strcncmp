@@ -1,0 +1,28 @@
+<?php
+$strl=$_POST['str1'];
+$stru=$_POST['str2'];
+echo "$strl";
+echo "<br>";
+echo "$stru";
+echo"<br>";
+if(strstr($stru,$strl))
+   {
+   	echo "the small string present in big string";
+   	$pos=strpos($stru,$strl);
+   	echo "<br>";
+   	if($pos==0)
+   		echo "the String is present in Beginning";
+   	else
+   		echo "the String present in position $pos";
+    echo "<br>";
+   	if(strncmp($stru,$strl,5)==0)
+   		echo "Both String is Same ";
+   	else
+   		echo "Both String is not Same ";
+   	  
+   }
+   else
+   	echo "small String not present in big string";
+
+
+?>
