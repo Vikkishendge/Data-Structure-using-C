@@ -1,0 +1,45 @@
+<!DocType>
+ <html>
+  <head>
+   <title>from</title>
+   <style>
+      form
+      {
+        text-align: center;
+      }
+   </style>
+     
+     <link rel="stylesheet" href="external.css">
+      
+   
+  </head>
+     <body>
+      <h1>* Create Form *</h1>
+       <form action="create.php"method="POST">
+          <p class="vikas"<label>username:</label>
+            <input type="text"name="name"><br><br>
+              <label>password:</label>
+               <input type="password"name="pass"><br></p>
+                 <p>Which of the operating system have you used.</p>
+                   <input type="Radio"name="radio" value="Linux"><label>Linux</label>
+                    <input type="Radio"name="radio" value="Windows"><label>Windows</label>
+                     <input type="Radio"name="radio" value="Macintosh 8.0"><label>Macintosh 8.0</label>
+                      <!---<p>Which of the Operating System do you like the best.</p>
+                        <input type=""name="box" value="l1"><label>Linux</label>
+                         <input type="checkbox"name="box" value="w1"><label>Windows</label>
+                           <input type="checkbox"name="box" value="m1"><label>Macintosh</label><br>
+                             --><p>You have completed the form then click on sign up button</p><hr>
+                               
+                               <!--- <p>which mof the mobail you have to use</p><br>
+                               <select type="Mobail"name="mobail">
+                             <option value="Vivo">Vivo</option>
+                            <option value="Mi">Mi</option>
+                          <option value="appple">Apple</option>
+                         <option value="1+">1+</option><br><hr><br>--->
+                          <input type="submit" name="submit">
+
+       </form>  
+     </body>
+   </html>
+
+
