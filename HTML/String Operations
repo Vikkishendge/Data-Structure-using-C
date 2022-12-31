@@ -1,0 +1,27 @@
+<!DOCType html>
+	<html>
+		<head><title> String operation</title>
+         <style>
+         	form
+         	{
+         	  text-align: center;
+         	}
+         </style>
+		</head>
+ 
+        <body>
+        	<form action="String.php" method="POST">
+        		<label>Enter the 1st String:<input type="text" name="txt1"></label><br><br>
+                <label>Enter the 2nd String:<input type="text" name="txt2"></label><br><br>
+
+                <input type="radio" name="ch" value="upp">UpperCase
+                <input type="radio" name="ch" value="low">LowerCase
+                <input type="radio" name="ch" value="ucf">UcFirst
+                <input type="radio" name="ch" value="ucw">UcWord
+                <br>
+                <button input type="submit" name="submit">Submit</button>
+                <input type="reset"  name="reset">           
+        	</form>
+        </body>
+
+	</html>
