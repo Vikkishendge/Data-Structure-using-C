@@ -1,0 +1,28 @@
+<!DOCType html>
+	<html>
+         <head>
+         	<title>Database</title>
+
+            <style>
+            	form
+            	{
+            		text-align: center;
+            	}
+            </style>
+         </head>
+
+        <body>
+        	<form action="M-to-M.php" method="POST">
+            <h1> Dispaly name of movies</h1>
+        		 Enter the actor name:<input type="text" name="actor"><Br><br>
+
+        		<input type="submit" name="submit"><br><br>
+
+            <!-- Enter the movie name:<input type="text" name="movie"><Br><br>
+
+            <input type="submit" name="submit"> -->
+        	</form>
+
+        </body>
+
+	</html>
