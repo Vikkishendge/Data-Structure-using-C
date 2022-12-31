@@ -1,0 +1,21 @@
+<?php
+$str=$_POST['txt1'];
+$select=$_POST['sel'];
+$Imp=explode($select,$str);
+print_r($Imp);
+echo "<br>";
+
+foreach($Imp as $value)
+{
+	echo "<br>";
+	echo "$value";
+}
+printf("<br>");
+$Im=implode($select,$Imp);
+print_r($Im);
+
+printf("<br> last word in given string is:");
+$last=array_pop($Imp);
+printf("$last");
+
+?>
