@@ -1,0 +1,21 @@
+<DOCType html>
+	<html>
+	    <head>
+	    <title>String</title>
+		<h1>Assignment no-3 SetB Quaction 2</h1>
+        </head>
+
+        <body style="text-align: center;">
+        	<form action="Ass3setB2.php" method="POST">
+        		Enter the String <input type="text" name="txt1"><br><br>
+        		Choose:<select name="sel">
+        			<option>#</option>
+        			<option>,</option>
+        			<option>|</option>
+        			<option>@</option>
+        		</select>
+        		<input type="submit" name="Submit">
+        		<input type="reset" name="Reset">
+        	</form>
+        </body>
+	</html>
