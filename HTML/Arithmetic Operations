@@ -1,0 +1,51 @@
+<html>
+<head><title>Document</title>
+<style>
+
+form
+{
+  text-align: center;
+  padding-top:15%;
+  padding-right:10%;
+  padding-bottom: 10%;
+  padding-left:10%;
+  margin-left: 10%;
+  margin-right: 15%;
+  margin-bottom: 20%;
+  margin-top: 10%;
+  border: solid black;
+   
+} 
+ form
+ {
+  background: skyblue;
+
+ } 
+
+</style>
+
+</head>
+<body>
+  
+  <form action=add.php method=POST>
+        
+   <label>Enter the First number:<input type="text" name="txt1"></label><br><br>
+  <label>Enter the Second number:<input type="text" name="txt2"></label><br><br><br>
+  <hr>
+      <input type="radio" value="add" name="operation"><label>Addition</label>
+      <input type="radio" value="mul" name="operation"><label>Multiplication</label>
+      <input type="radio" value="sub" name="operation"><label>Subtraction</label><br>
+      <input type="radio" value="div" name="operation"><label>Division</label>
+      <input type="radio" value="squ" name="operation"><label>Squre</label>
+      <input type="radio" value="pow" name="operation"><label>Power</label>
+      <input type="radio" value="fact"name="operation"><label>Factorial</label>
+  <hr>
+ <button input type="submit" value="submit"> submit </buttan>
+  
+<button input type="reset" value="reset"> reset </buttan>
+ </form>
+</body>
+<html>
+
+
+
