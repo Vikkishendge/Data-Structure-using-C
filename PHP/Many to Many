@@ -1,0 +1,32 @@
+<?php
+
+$actorname=$_POST['actor'];
+//$moviename=$_POST['movie'];
+
+$servername="localhost";
+$username="root";
+$password="mysql@123";
+$dbname="media";
+
+$db=mysqli_connect($servername,$username,$password,$dbname);
+if($db)
+
+echo "connect.......";
+else
+echo " not connect.....";
+
+$Query="select mname from movie,actor,mov_act where aname='$actorname' and movie.mno=mov_act.mno and actor.ano=mov_act.ano";
+
+/*$Query="select aname from movie,actor,mov_act where mname='$moviename' and movie.mno=mov_act.mno and actor.ano=mov_act.ano";*/
+$r=mysqli_query($db,$Query);
+
+print"<table border=2>";
+print"<th> movies name</th>";
+while( $row=mysqli_fetch_array($r)) 
+{
+	print"<tr>";
+    print"<td>$row[0]</td>";
+	print "</tr>";
+}
+
+?>
