@@ -1,0 +1,61 @@
+<?php
+$a=$_POST['txt1'];
+$b=$_POST['txt2'];
+//$sum=$name1+$name2;
+//*echo "Addition of $name1 & $name2 is $sum";
+$choice=$_POST['operation'];
+switch ($choice) {
+	case 'add':
+		$sum=$a+$b;
+		echo "addition of $a and $b is $sum";
+		break;
+
+	case 'mul':
+	    $sum=$a*$b;
+	    echo "multiplication of $a and $b is $sum";
+	    break;
+
+    case 'sub':
+	    $sum=$a-$b;
+	    echo "subtraction of $a and $b is $sum";
+	    break;
+
+    case 'div':
+	    $sum=$a/$b;
+	    echo "Division of $a and $b is $sum";
+         break;
+
+    case 'squ':
+        $sum=$a*2;
+        echo "the squre of $a is = $sum";
+        $sum=$b*2;
+        echo "the squre of $b is = $sum";
+        break;
+
+    case 'pow':
+	    $sum=$a**$a;
+	    echo "the power of $a is = $sum";
+	    $sum=$b**$b;
+	    echo "the power of $b is =$sum";
+	    break;
+
+	case 'fact':
+       $n=$a;
+       $fact=1;
+       for($i=1;$i<=$n;$i++)
+       {
+          $fact=$fact*$i;
+       }
+       echo "<br>The factorial of $n is :$fact";
+       $n=$b;
+       $fact=1;
+       for($i=1;$i<=$n;$i++)
+       {
+          $fact=$fact*$i;
+       }
+       echo "<br>The factorial of $n is :$fact";
+       break;
+
+}
+
+?>
