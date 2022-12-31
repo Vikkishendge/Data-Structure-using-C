@@ -1,0 +1,279 @@
+<?php
+/*Array
+types of Array-
+   1) numeric array/index array    -- index based
+   2)associative array     -- key value pair
+   3)multidimentional array  --array in array
+
+----------------------------------------------------------------------------
+
+
+//index array
+
+$arr=array(10,20,30,40,);
+print_r($arr);
+---------------------------------------------------------------------
+
+// Associative array 
+$arr1=array('one'=>10,'two'=>20,'three'=>30);  // key value
+print_r($arr1);
+// if the key is numrical assign the only one key so auto key assign other values
+$arr2=array(1=>'pune','mumbai','delhi');
+print_r($arr2);
+----------------------------------------------------------- 
+// adding value end with array
+$arr=array(10,20,30,40);
+$arr[]=50;
+print_r($arr);
+
+echo "<br>";
+
+$arr2=array(1=>'pune','mumbai','delhi');
+$arr2[]='baramati';
+print_r($arr2);
+---------------------------------------------------------------
+
+// Range() function create array using this range
+$a=range(1, 5);
+print_r($a);
+echo "<br>";
+// reverse array
+$aa=range(5, 1);
+print_r($aa);
+-----------------------------------------------------------------
+
+ // count(),sizeof()- it return the size of array
+$arr=array(10,20,30,40);
+//$size=count($arr);
+$size=sizeof($arr);
+echo "$size";
+----------------------------------------------------------------
+
+// array_pad(arr,size,addend with array) -it return the add any character/symbol end of array
+
+$arr=array(100,200);
+$arr=array_pad($arr, 5, 1);
+print_r($arr);
+
+------------------------------------------------------------------------
+
+// Extracting multiple values
+// list() the list function using array element are assign the variables,
+$arr=array(10,20,30);
+print_r($arr);
+echo "<br>";
+list($a,$b,$c)=$arr;
+echo "$a,$b,$c";
+echo "<br>";
+--------------------------------------------------------------------
+
+//associative 
+//list function work with numeric key/index
+$arr1=array(0=>"pune",1=>"mumbai",2=>"Delhi");
+print_r($arr1);
+list($a,$b,$c)=$arr1;
+echo "$a,$b,$c";
+-----------------------------------------------------------------------
+
+// array_slice(arr,start,size) it return the new array and old array element put in it
+$arr=array('c','java','python','php','html','css');
+print_r($arr);
+$arr1=array_slice($arr,1,3);
+print_r($arr1);
+---------------------------------------------------------------------
+
+ // array_chunk(arr,size) it function return the create multidimentional array and it size 
+$arr=['one','two','three0','four','five','six','seven'];   // chunk means the the array divide the different array
+$new=array_chunk($arr, 2);  // it is create new array and each array size is two
+echo "<pre>";
+print_r($new);
+echo "</pre>";
+-----------------------------------------------------------------------
+
+// array_keys() it return only keys in array and create key array
+$arr1=array('one'=>"pune",'two'=>"mumbai",'three'=>"Delhi");
+print_r($arr1);
+$key=array_keys($arr1);
+echo "<pre>";
+print_r($key);
+echo "</pre>";
+----------------------------------------------------------------------
+// array_values() return a values of key crate for value array 
+$arr1=array('one'=>"pune",'two'=>"mumbai",'three'=>"Delhi");
+print_r($arr1);
+$value=array_values($arr1);
+echo "<pre>";
+print_r($value);
+echo "</pre>";
+---------------------------------------------------------------------
+
+  // array_key_exists('key',arr) it check the key is exists in array or not 
+$arr1=array('one'=>"pune",'two'=>"mumbai",'three'=>"Delhi");
+if(array_key_exists('two',$arr1))
+{
+   echo "exists";
+}
+else
+{
+   echo "not exists";
+}
+------------------------------------------------------------------------
+
+//array_splice(arr,index) it return the delete array element 
+$arr1=['blue','black','green','white','red'];
+echo "<pre>";
+print_r($arr1);
+echo "</pre>";
+echo "<br>";
+array_splice($arr1,3); // delete 3rd index to end 
+print_r($arr1);
+----------------------------------------------------------------------
+
+//array_splice(arr,index,size) it return the how many element delete thats size 
+$arr1=['blue','black','green','white','red'];
+
+array_splice($arr1,2,2);
+echo "<pre>";
+print_r($arr1);
+echo "</pre>";
+----------------------------------------------------------------------
+
+//array_splice($arr1,index start,elemet delete size(or 0-it not delete element add only),$arr2) it return the add the element in other array to that array 
+$arr1=['blue','black','green','white','red'];
+$arr2=['orange','Apple','cheeri'];
+array_splice($arr1,2,0,$arr2);// arr1 in put arr2 element 
+echo "<pre>";
+print_r($arr1);
+echo "</pre>";
+------------------------------------------------------
+
+$arr1=['blue','black','green','white','red'];
+$arr2=['orange','Apple','cheeri'];
+array_splice($arr1,2,2,$arr2); // delete arr1 in index 2 to size two and add arr2 element in arr1
+echo "<pre>";
+print_r($arr1);
+echo "</pre>";
+----------------------------------------------------------
+
+// Creating variables from an array
+//extract() it return the array element to local variable
+$arr=array("a" => "Cat","b" => "Dog", "c" => "Horse");
+extract($arr);
+echo "\$a = $a,\$b=$b,\$c=$c";
+-----------------------------------------------------------
+
+// creating array from the variables
+$a='hello';
+$b='good';
+$c='morning';
+
+$arr=compact('$a','$b','$c');
+print_r($arr);
+
+------------------------------------------------------------------------------
+
+// array_walk(array,'name of function') it return the run each element in user define function
+function myfunction($value,$key)
+{
+echo "The key $key has the value $value<br>";
+}
+$a=array("a"=>"red","b"=>"green","c"=>"blue");
+array_walk($a,"myfunction");// array name and function name
+-----------------------------------------------------------------------------
+
+// array_reduce()it send the value of user define function and return the string
+function myfunction($v1,$v2)
+{
+return $v1 . "-" . $v2;
+}
+$a=array("Dog","Cat","Horse");
+print_r(array_reduce($a,"myfunction"));
+-------------------------------------------------------------------------------
+
+// in_array('name of element',array) it return the search specific element
+$people = array("Peter", "Joe", "Glenn", "Cleveland");
+
+if (in_array("Glenn", $people))
+  {
+  echo "Match found";
+  }
+else
+  {
+  echo "Match not found";
+  }
+-----------------------------------------------------------------------------
+
+//Sorting 
+// sort(arr) it return the ascending order of array
+$arr=array(10,30,40,20);
+sort($arr);
+print_r($arr);
+---------------------------------------------------------------------------
+
+//rsort(arr) it return the decending order
+$arr=array(30,20,10,50);
+rsort($arr);
+print_r($arr);
+----------------------------------------------------------------
+
+ // asort(arr) it return associative array are acending order
+$a=array("b"=>"green","a"=>"red","c"=>"blue");
+asort($a);
+print_r($a);
+-----------------------------------------------------
+
+// ksort(arr) associative array acending order according to key 
+$a=array("b"=>"green","a"=>"red","c"=>"blue");
+ksort($a);
+print_r($a);
+-----------------------------------------------
+
+// arsort() return associative arrays in descending order, according to the value
+$a=array("b"=>"green","a"=>"red","c"=>"blue");
+arsort($a);
+print_r($a);
+--------------------------------------------------------
+
+// krsort() sort associative arrays in descending order, according to the key
+$a=array("b"=>"car","a"=>"aeroplane","c"=>"Truck");
+krsort($a);
+print_r($a);
+-----------------------------------------------------
+
+ //array_reverse() reverse the array
+$arr=array(50,30,40,10,60,20);
+print_r(array_reverse($arr));
+----------------------------------------------------
+
+//array_flip() return the exchange all key with their values
+$arr1=array("ab"=>"red","zz"=>"green","vs"=>"blue","kk"=>"yellow");
+$vp=array_flip($arr1);
+print_r($vp);
+------------------------------------------------------
+
+// shuffle() it return random element
+$arr = array("hp","vp","ty","sy","bcs");
+
+shuffle($arr);
+print_r($arr);
+-------------------------------------------------------
+// array_sum(arr) return sum of all element in array
+$arr=array(10,20,30,40);
+$sum=array_sum($arr);
+echo "$sum";
+------------------------------------------------
+
+//array_merge() it return merge the two array in single array
+$arr1=array(10,20,30,40);
+$arr2=array(50,60,70);
+$Merge=array_merge($arr1,$arr2);
+print_r($Merge);
+------------------------------------------------
+
+//array_diff(aar1,ae2) reuturn the different element int two array
+$arr1=array(10,20,30,40);
+$arr2=array(10,20,30);
+print_r(array_diff($arr1,$arr2));
+--------------------------------------------------
+*/
+?>
