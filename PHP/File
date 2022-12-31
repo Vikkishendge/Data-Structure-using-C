@@ -1,0 +1,10 @@
+<?php 
+$filename=fopen("vikas.txt", "r") or die("Unable file ");
+//$test="i am a bcs student";
+//fwrite($filename, $test);
+//echo fread($filename,filesize("vikas.txt"));
+$read=fread($filename, 5);
+
+fclose($filename);
+echo $read;
+?>
