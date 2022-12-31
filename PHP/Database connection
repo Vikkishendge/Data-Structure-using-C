@@ -1,0 +1,80 @@
+<?php
+$servername="localhost";
+$username="root";
+$password="mysql@123";
+$dbname="vikas";
+$db=mysqli_connect($servername,$username,$password,$dbname);
+if($db)
+echo "connect.....";
+else
+echo "not connect......";
+
+$user=$_POST['name'];
+$password=$_POST['pass'];
+
+$choice=$_POST['radio'];
+switch($choice) {
+	case 'Linux':
+		$Query="insert into machine values('$user','password','$choice')";
+		$r=mysqli_query($db,$Query);
+		if($r)
+			echo "succesfully insert....";
+		else
+			echo "not insert...";
+
+print"<table border=1>";
+print"<th>username</th>";
+print"<th>password</th>";
+print"<th>Name_OS</th>";
+while($row=mysqli_fetch_array($r)) 
+{
+	print"<tr>";
+	  echo "<td>$row[0]</td>";
+      echo "<td>$row[1]</td>";
+      echo "<td>$row[2]</td>";
+    print"</tr>";
+	break;
+	case'Windows':
+	    $Query="insert into machine values('$user','password','$choice')";
+		$r=mysqli_query($db,$Query);
+		if($r)
+			echo "succesfully insert....";
+		else
+			echo "not insert...";
+print"<table border=1>";
+print"<th>username</th>";
+print"<th>password</th>";
+print"<th>Name_OS</th>";
+while($row=mysqli_fetch_array($r)) 
+{
+	print"<tr>";
+	  echo "<td>$row[0]</td>";
+      echo "<td>$row[1]</td>";
+      echo "<td>$row[2]</td>";
+    print"</tr>";
+		break;
+
+	case 'Macintosh 8.0':
+	    $Query="insert into machine values('$user','password','$choice')";
+		$r=mysqli_query($db,$Query);
+		if($r)
+			echo "succesfully insert....";
+		else
+			echo "not insert...";
+
+		print"<table border=1>";
+print"<th>username</th>";
+print"<th>password</th>";
+print"<th>Name_OS</th>";
+while($row=mysqli_fetch_array($r)) 
+{
+	print"<tr>";
+	  echo "<td>$row[0]</td>";
+      echo "<td>$row[1]</td>";
+      echo "<td>$row[2]</td>";
+    print"</tr>";
+	break;
+	
+}
+
+?>
