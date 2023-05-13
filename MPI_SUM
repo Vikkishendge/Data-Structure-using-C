@@ -1,0 +1,29 @@
+// MPI_SUM programs
+#include<stdio.h>
+#include<mpi.h>
+#define SIZE 1000
+
+int main(int argc,char **args)
+{
+	int local_sum=0,sum=0;
+	int i,size,rank,data[SIZE];
+	
+	MPI_Init(&argc,&args);
+	MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+	MPI_Comm_size(MPI_COMM_WORLD,&size);
+	
+	for(i=0;i<SIZE;i++)
+	{
+		data[i]=rand();
+	}
+	for(i=0;i<SIZE/size;i++)
+	{
+		local_sum+=data[i];
+	}
+	MPI_Reduce(&local_sum,&sum,1,MPI_INT,MPI_SUM,0,MPI_COMM_WORLD);
+	if(rank==0)
+	{
+		printf("The sum is:%d",sum);
+	}
+	MPI_Finalize();
+}
