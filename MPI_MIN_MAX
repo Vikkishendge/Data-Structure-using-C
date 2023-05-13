@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<mpi.h>
+#include<limits.h>
+
+#defile SIZE 1000
+
+int main(int argc,char **argv)
+{
+	int size,rank,i;
+	int local_min=INT_MAX,local_max=INT_MIN;
+	int global_min,global_max;
+	int data[SIZE];
+	
+	MPI_Init(null,null);
+	MPI_Comm_size(MPI_COMM_WORLD,&size);
+	MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+	
+	for(i=0;i<SIZE;i++)
+	{
+		data[i]=rand();
+	}
+	for(i=0;i<SIZE/size;i++)
+	{
+		if(data[i]<local_min)
+		{
+			local_min=data[i];
+		}
+		else
+		if(data[i]>local_max)
+		{
+			local_max=data[i];
+		}
+		
+	}
+	MPI_Reduce(&local_min,&global_min,1,MPI_INT,MPI_MIN,0,MPI_COMM_WORLD);
+	MPI_Reduce(&local_max,&global_max,1,MPI_INT,MPI_MAX,0,MPI_COMM_WORLD);
+	if(rank==0)
+	{
+		printf("minimal global is:%d",global_min);
+	    printf("maximun global is:%d",global_max);
+	}
+	MPI_Finalize();
+}
