@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @VikasShendge
 - 👀 I’m interested Software Developement.
-- 🌱 I’m currently DSA
+- 🌱 I’m currently learning DSA
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
 
